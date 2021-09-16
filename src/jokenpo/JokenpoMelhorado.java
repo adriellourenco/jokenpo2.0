@@ -14,18 +14,20 @@ public class JokenpoMelhorado {
 		int numeroMaximoPartidas = 1;
 		int contador = 0;
 		int empates = 0;
+		int numeroDaPartida = 1;
 		String respostaUsuario = "sim";
 
 		Scanner leitor = new Scanner(System.in);
-
+		
 		while (respostaUsuario.equalsIgnoreCase("sim")) {
-
+			
 			System.out.println("----------------------------");
-			System.out.println(" J O K E N P O");
+			System.out.println("        J O K E N P O       ");
 			System.out.println("----------------------------\n");
 
 			while (numeroMaximoPartidas < 3 || numeroMaximoPartidas % 2 == 0) {
 
+				
 				System.out.println("Qual é o Número de Partidas que você deseja jogar?\n"
 						+ "*LEMBRE-SE: número de partidas TEM QUE SER MAIOR QUE 3 E SER ÍMPAR!");
 				numeroMaximoPartidas = leitor.nextInt();
@@ -37,6 +39,8 @@ public class JokenpoMelhorado {
 
 				while (escolhaUsuario <= 0 || escolhaUsuario > 3) {
 					
+					System.out.println("PARTIDA " +numeroDaPartida);
+					System.out.println();
 					System.out.println("Pedra - 1");
 					System.out.println("Papel - 2");
 					System.out.println("Tesoura - 3");
@@ -84,6 +88,7 @@ public class JokenpoMelhorado {
 				
 			contador++;
 			escolhaUsuario = 0;
+			numeroDaPartida++;
 			}
 			
 			if (pontuacaoMaquina==pontuacaoUsuario) {
@@ -143,8 +148,9 @@ public class JokenpoMelhorado {
 				}
 			} 
 			
+			
 			System.out.println("----------------------------");
-			System.out.println("RESULTADOS");
+			System.out.println("        RESULTADOS          ");
 			System.out.println("----------------------------");
 			System.out.println("Sua Pontuação: " +pontuacaoUsuario);
 			System.out.println("Pontuação da Máquina: " +pontuacaoMaquina);
@@ -163,11 +169,20 @@ public class JokenpoMelhorado {
 			numeroMaximoPartidas = 1;
 			contador = 0;
 			empates = 0;
+			numeroDaPartida = 1;
 			
 			System.out.println("Deseja jogar mais uma vez? (Sim/Não)");
 			respostaUsuario = leitor.next();
+			System.out.println();
+			
+			while (!respostaUsuario.equalsIgnoreCase("sim") && !respostaUsuario.equalsIgnoreCase("não") ) {
+				System.out.println("Por favor, digite 'Não' ou 'Sim'!");
+				System.out.println("Deseja jogar mais uma vez? (Sim/Não)");
+				respostaUsuario = leitor.next();
+			}
 		}
 		
+		leitor.close();
 		System.out.println("OBRIGADO POR JOGAR!!!");
 		System.out.println();
 
